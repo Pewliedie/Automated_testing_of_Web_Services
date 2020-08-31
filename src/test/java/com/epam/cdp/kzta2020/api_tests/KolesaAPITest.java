@@ -8,6 +8,7 @@ import com.epam.cdp.kzta2020.utils.HtmlUtils;
 import com.google.gson.Gson;
 import org.apache.http.Header;
 import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
@@ -34,7 +35,7 @@ public class KolesaAPITest {
             HttpGet httpGet = new HttpGet(configuration.getBaseURI() + "/mototehnika/karaganda/");
             HttpResponse response = httpclient.execute(httpGet);
 
-            Assert.assertEquals(response.getStatusLine().getStatusCode(), 200);
+            Assert.assertEquals(response.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
         } catch (IOException e) {
             e.printStackTrace();
         }
