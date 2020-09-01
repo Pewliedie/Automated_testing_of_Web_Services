@@ -16,6 +16,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
@@ -27,12 +28,12 @@ import java.util.List;
 
 public class APITest {
 
-    final Configuration configuration = ConfigUtil.getConfiguration();
+    final private Configuration configuration = ConfigUtil.getConfiguration();
+    private final HttpClient httpclient = HttpClients.createDefault();
 
     @Test
     public void checkStatusCode() {
         try {
-            HttpClient httpclient = HttpClients.createDefault();
             HttpGet httpGet = new HttpGet(configuration.getBaseURI() + "/mototehnika/karaganda/");
             HttpResponse response = httpclient.execute(httpGet);
 
@@ -45,7 +46,6 @@ public class APITest {
     @Test
     public void checkResponseHeader() {
         try {
-            HttpClient httpclient = HttpClients.createDefault();
             HttpGet httpGet = new HttpGet(configuration.getBaseURI() + "/cars");
             HttpResponse response = httpclient.execute(httpGet);
 
@@ -66,7 +66,7 @@ public class APITest {
             for (String s : HtmlUtils.selectText(id)) {
                 adverts.add(new Advert(s));
             }
-            Assert.assertEquals(adverts.size(),21);
+            Assert.assertEquals(adverts.size(),19);
 
         }
         catch (IOException e){
@@ -77,7 +77,6 @@ public class APITest {
     @Test
     public void checkResponseContent() {
         try {
-            HttpClient httpclient = HttpClients.createDefault();
             HttpGet httpGet = new HttpGet(configuration.getJsonPhBaseURI() + "/users");
             HttpResponse response = httpclient.execute(httpGet);
 
