@@ -7,6 +7,7 @@ import com.epam.cdp.kzta2020.utils.ConfigUtil;
 import com.epam.cdp.kzta2020.utils.HtmlUtils;
 import com.google.gson.Gson;
 import org.apache.http.Header;
+import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class KolesaAPITest {
+public class APITest {
 
     final Configuration configuration = ConfigUtil.getConfiguration();
 
@@ -48,7 +49,7 @@ public class KolesaAPITest {
             HttpGet httpGet = new HttpGet(configuration.getBaseURI() + "/cars");
             HttpResponse response = httpclient.execute(httpGet);
 
-            Header[] contentTypeHeader = (response.getHeaders("content-type"));
+            Header[] contentTypeHeader = (response.getHeaders(HttpHeaders.CONTENT_TYPE));
             Assert.assertTrue(Arrays.toString(contentTypeHeader).contains(configuration.getExpectedContentHeader()));
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,6 +67,7 @@ public class KolesaAPITest {
                 adverts.add(new Advert(s));
             }
             Assert.assertEquals(adverts.size(),21);
+
         }
         catch (IOException e){
             e.printStackTrace();

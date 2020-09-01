@@ -4,7 +4,7 @@
     <test verbose="2"
           name="ApiTest">
         <classes>
-            <class name="com.epam.cdp.kzta2020.api_tests.KolesaAPITest"/>
+            <class name="com.epam.cdp.kzta2020.api_tests.APITest"/>
         </classes>
     </test>
 </suite>
