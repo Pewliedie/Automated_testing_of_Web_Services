@@ -60,7 +60,7 @@ public class APITest {
     public void checkAdvertQuantity() {
         try {
             Document document = Jsoup.connect(configuration.getBaseURI() + "/cars/toyota/corolla/karaganda/").get();
-            String id = document.select("div[id*=\"advert-1\"]").toString();
+            String id = document.select(configuration.getIdSelector()).toString();
             List<Advert> adverts = new ArrayList<>();
 
             for (String s : HtmlUtils.selectText(id)) {

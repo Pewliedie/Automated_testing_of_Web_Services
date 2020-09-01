@@ -4,6 +4,7 @@ public class Configuration {
     private String baseURI;
     private String jsonPhBaseURI;
     private String expectedContentHeader;
+    private String idSelector;
 
     public String getBaseURI() {
         return baseURI;
@@ -27,5 +28,13 @@ public class Configuration {
 
     public void setExpectedContentHeader(String expectedContentHeader) {
         this.expectedContentHeader = expectedContentHeader;
+    }
+
+    public String getIdSelector() {
+        return idSelector;
+    }
+
+    public void setIdSelector(String idSelector) {
+        this.idSelector = idSelector;
     }
 }
