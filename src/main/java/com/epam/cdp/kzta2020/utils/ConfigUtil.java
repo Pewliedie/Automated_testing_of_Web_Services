@@ -8,11 +8,13 @@ public class ConfigUtil {
 
     private static final String BASE_URI = "baseURI";
     private static final String JSON_PH_BASE_URI = "jsonPhBaseURI";
+    private static final String EXPECTED_CONTENT_HEADER = "expectedContentHeader";
 
     public static Configuration getConfiguration() {
         Configuration configuration = new Configuration();
         configuration.setBaseURI(ConfigReader.getProperty(BASE_URI));
         configuration.setJsonPhBaseURI(ConfigReader.getProperty(JSON_PH_BASE_URI));
+        configuration.setExpectedContentHeader(ConfigReader.getProperty(EXPECTED_CONTENT_HEADER));
         return configuration;
     }
 }

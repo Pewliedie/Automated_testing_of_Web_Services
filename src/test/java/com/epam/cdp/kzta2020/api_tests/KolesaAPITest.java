@@ -49,7 +49,7 @@ public class KolesaAPITest {
             HttpResponse response = httpclient.execute(httpGet);
 
             Header[] contentTypeHeader = (response.getHeaders("content-type"));
-            Assert.assertTrue(Arrays.toString(contentTypeHeader).contains("text/html; charset=UTF-8"));
+            Assert.assertTrue(Arrays.toString(contentTypeHeader).contains(configuration.getExpectedContentHeader()));
         } catch (IOException e) {
             e.printStackTrace();
         }
